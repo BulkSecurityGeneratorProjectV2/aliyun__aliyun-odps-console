@@ -25,6 +25,8 @@ import static org.junit.Assert.assertNotNull;
 import com.aliyun.odps.ship.DShipCommand;
 import com.aliyun.openservices.odps.console.ExecutionContext;
 import java.io.File;
+import java.nio.file.Files;
+
 import org.junit.Test;
 
 public class TunnelCommandTest {
@@ -32,7 +34,7 @@ public class TunnelCommandTest {
   @Test
   public void test() throws Exception {
     ExecutionContext ctx = ExecutionContext.init();
-    File temp = File.createTempFile("test", null);
+    File temp = Files.createTempFile("test", null).toFile();
     temp.deleteOnExit();
     DShipCommand cmd = TunnelCommand
         .parse(

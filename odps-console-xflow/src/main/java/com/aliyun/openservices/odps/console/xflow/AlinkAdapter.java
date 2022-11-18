@@ -37,6 +37,7 @@ import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
 import java.io.*;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -253,7 +254,7 @@ public class AlinkAdapter {
 
     public String createTempCommandFile(String command) throws ODPSConsoleException {
         try {
-            File tempCommandFile = File.createTempFile("alink_command_", ".sh");
+            File tempCommandFile = Files.createTempFile("alink_command_", ".sh").toFile();
             tempCommandFile.deleteOnExit();
             FileOutputStream outputStream = new FileOutputStream(tempCommandFile);
             outputStream.write(command.getBytes());
